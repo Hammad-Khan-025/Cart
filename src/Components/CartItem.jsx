@@ -3,12 +3,12 @@ import { FaPlus, FaMinus } from "react-icons/fa6";
 import { useGlobalContext } from "./Context";
 
 const CartItem = () => {
-  const { cart, remove } = useGlobalContext();
+  const { cart, remove, increase, decrease } = useGlobalContext();
 
   return (
     <section>
-      {cart.map((item, index) => {
-        const { id, title, price, img } = item;
+      {cart.map((item) => {
+        const { id, title, price, img, amount } = item;
 
         return (
           <article
@@ -26,11 +26,18 @@ const CartItem = () => {
               </div>
             </div>
             <div className="flex items-center gap-2 sm:gap-5">
-              <button className="hover:bg-blue-500 p-2 sm:p-3 rounded-full text-sm sm:text-base active:bg-blue-800 hover:text-white transition-colors duration-300">
+              <button
+                className="hover:bg-blue-500 p-2 sm:p-3 rounded-full text-sm sm:text-base active:bg-blue-900 hover:text-white transition-colors duration-300"
+                onClick={() => decrease(id)}
+              >
                 <FaMinus />
               </button>
-              <h1 className="font-bold text-blue-500">1</h1>
-              <button className="hover:bg-blue-500 p-2 sm:p-3 rounded-full text-sm sm:text-base active:bg-blue-800 hover:text-white transition-colors duration-300">
+              <h1 className="font-bold text-blue-500 sm:text-lg">{amount}</h1>
+              {/* Correctly render amount for each item */}
+              <button
+                className="hover:bg-blue-500 p-2 sm:p-3 rounded-full text-sm sm:text-base active:bg-blue-900 hover:text-white transition-colors duration-300"
+                onClick={() => increase(id)}
+              >
                 <FaPlus />
               </button>
             </div>
