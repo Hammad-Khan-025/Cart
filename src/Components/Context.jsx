@@ -30,6 +30,9 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'DECREASE', payload: id });
   };
 
+  const refresh = () => {
+    dispatch({type: 'REFRESH'})
+  }
 
   useEffect(()=>{
     dispatch({type: 'GET_TOTALS'})
@@ -43,6 +46,7 @@ const AppProvider = ({ children }) => {
         remove,
         increase,
         decrease,
+        refresh
       }}
     >
       {children}

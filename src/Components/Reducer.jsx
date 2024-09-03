@@ -1,3 +1,5 @@
+import data from "./Data";
+
 const Reducer = (state, action) => {
   if (action.type === "CLEAR_CART") {
     return { ...state, cart: [] };
@@ -52,6 +54,10 @@ const Reducer = (state, action) => {
     total = parseFloat(total.toFixed(2))
 
     return { ...state, total, amount }
+  }
+
+  if(action.type === 'REFRESH'){
+    return {...state, cart: [...data]}
   }
 
     return state;

@@ -4,13 +4,14 @@ import { useGlobalContext } from './Context'
 
 const CartContainer = () => {
 
-  const {total, cart, clearCart} = useGlobalContext()
+  const {total, cart, clearCart, refresh} = useGlobalContext()
 
   if(cart.length == 0){
     return (
       <section className="flex flex-col items-center bg-slate-200 min-h-[calc(100vh-80px)] pt-10 tracking-wider">
         <h1 className="uppercase font-medium text-2xl sm:text-3xl text-center mb-5">Your Bag</h1>
         <p className="text-gray-600 font-medium text-lg">is currently empty</p>
+        <button className='bg-blue-300 py-1 px-2 rounded-lg font-semibold hover:bg-blue-500 hover:text-white transition-colors duration-300 active:bg-blue-900 mt-5' onClick={refresh}>Refresh</button>
       </section>
     )
   }
